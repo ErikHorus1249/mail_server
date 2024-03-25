@@ -1,9 +1,8 @@
 # Define desired NTP server
-$desiredNTPServer = "10.0.14.11"  
+$desiredNTPServer = "10.0.14.1"  
 
 # Get configured NTP server
-# $NTPServer = (Get-ItemProperty -Path HKLM:\SYSTEM\CurrentControlSet\Control\TimeProviders\NtpClient).NtpServer
-$NTPServer = "10.0.14.12" 
+$NTPServer = (Get-ItemProperty -Path HKLM:\SYSTEM\CurrentControlSet\Control\TimeProviders\NtpClient).NtpServer
 # Compare and send email if mismatch
 if ($NTPServer -ne $desiredNTPServer) {
     $body = @{

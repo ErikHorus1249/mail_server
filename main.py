@@ -1,7 +1,7 @@
 from typing import Union
 from fastapi import FastAPI
 from pydantic import BaseModel
-from send import send_email
+from utils import export_csv
 
 app = FastAPI()
 
@@ -13,5 +13,5 @@ app = FastAPI()
 
 @app.post("/checker/")
 async def create_item(item: Info):
-    sent_status = send_email(item.hostname, item.ntp)
-    return True if sent_status else False
+    status = export_csv(item.hostname, item.ntp)
+    return True if status else False
