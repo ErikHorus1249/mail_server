@@ -7,11 +7,12 @@ app = FastAPI()
 
 class Info(BaseModel):
     hostname: str
+    username: str
     ntp: str
     
 app = FastAPI()
 
 @app.post("/checker/")
 async def create_item(item: Info):
-    status = export_csv(item.hostname, item.ntp)
+    status = export_csv(item.hostname,item.username, item.ntp)
     return True if status else False

@@ -4,15 +4,15 @@ import csv
 import datetime
 
 
-def export_csv(hostname: str, current_time_server: str):
+def export_csv(hostname: str, username: str, current_time_server: str):
     file_path = f"reports/non_sync_servers_{datetime.datetime.now().strftime('%d_%m_%Y')}.csv"
     
     
     # my data rows as dictionary objects
-    mydict = [{'timestamp': datetime.datetime.now(), 'hostname': hostname, 'curent_time_server': current_time_server,},]
+    mydict = [{'timestamp': datetime.datetime.now(), 'hostname': hostname, 'username': username, 'curent_time_server': current_time_server,},]
     
     # field names
-    fields = ['timestamp', 'hostname', 'curent_time_server']
+    fields = ['timestamp', 'hostname', 'username', 'curent_time_server']
     try:
         # check exist file 
         if not os.path.isfile(file_path):
